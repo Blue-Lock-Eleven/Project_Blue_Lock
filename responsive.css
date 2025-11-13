@@ -1,0 +1,364 @@
+/* Responsive Design */
+
+/* Tablets and small desktops */
+@media (max-width: 992px) {
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+
+    .nav-menu {
+        display: none; /* Hidden by default, shown via JS */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 17, 34, 0.98);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid var(--primary-blue);
+        padding: 2rem 0;
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 3.5rem;
+    }
+
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .specialties-grid,
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .football-ground-container {
+        margin-top: 2rem;
+    }
+
+
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .team-name {
+        font-size: 1.5rem;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hero {
+        padding-top: 100px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .section-subtitle {
+        margin-bottom: 2rem;
+    }
+
+    .specialties-grid,
+    .achievements-grid,
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .specialty-card,
+    .achievement-card,
+    .stat-item {
+        padding: 2rem;
+    }
+
+    .contact-content {
+        gap: 2rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 2rem;
+    }
+
+    .footer {
+        padding: 2rem 1rem;
+    }
+
+    .football-ground {
+        min-height: 700px; /* Adjust to allow more space for cards */
+        display: none;
+    }
+
+    .members-cards-container {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center; /* Center cards when stacked */
+    }
+
+    .member-card-wrapper {
+        position: static;
+        width: 80%; /* Make cards take more width */
+        max-width: 300px; /* Limit max width */
+        height: auto;
+    }
+
+    .member-card {
+        transform-style: preserve-3d; /* Re-enable 3D for flipping */
+        height: 250px; /* Give a fixed height for consistency */
+    }
+
+    .card-front,
+    .card-back {
+        position: absolute; /* Needed for layering */
+        backface-visibility: hidden; /* Hide the back of the card initially */
+    }
+
+    .card-back {
+        transform: rotateY(180deg); /* Keep the back rotated */
+        padding: 1rem;
+    }
+}
+
+/* Very small mobile devices (e.g., S24, iPhone SE) */
+@media (max-width: 400px) {
+    .team-name {
+        font-size: 1.2rem;
+    }
+
+    .logo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .member-card-wrapper {
+        width: 95%; /* Even wider for very small screens */
+        max-width: 180px; /* Smaller max width */
+    }
+
+    .member-name {
+        font-size: 1.5rem;
+    }
+
+    .member-specialty {
+        font-size: 0.8rem;
+    }
+
+    .stat-badge {
+        font-size: 0.7rem;
+        padding: 0.3rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.5rem;
+    }
+
+    .info-item {
+        padding: 1rem;
+        flex-direction: column; /* Stack icon and text */
+        text-align: center;
+    }
+
+    .info-icon {
+        margin-bottom: 0.5rem;
+    }
+
+    .info-text h4 {
+        font-size: 1.1rem;
+    }
+
+    .info-text p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Smartwatch and very small devices */
+@media (max-width: 320px) {
+    body {
+        -webkit-text-size-adjust: 100%; /* Prevent iOS font scaling */
+    }
+
+    #matrix-canvas,
+    .scanline-overlay,
+    .animated-bg,
+    .particles {
+        display: none; /* Disable heavy animations for performance */
+    }
+
+    .navbar {
+        padding: 0.5rem 0;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .team-name {
+        display: none; /* Hide team name to save space */
+    }
+
+    .nav-menu {
+        top: 55px; /* Adjust for smaller navbar */
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.8rem 0;
+    }
+
+    .hero {
+        min-height: 60vh;
+        padding: 80px 1rem 1rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
+
+    .hero-description {
+        font-size: 0.8rem;
+    }
+
+    .terminal-window {
+        display: none; /* Hide complex elements */
+    }
+
+    section {
+        padding: 80px 1rem 2rem;
+        min-height: auto;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .about-description,
+    .card-description,
+    .achievement-description {
+        font-size: 0.9rem;
+    }
+
+    .stats {
+        gap: 1rem;
+    }
+
+    .stat-item {
+        padding: 1rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    .specialty-card,
+    .achievement-card {
+        padding: 1.5rem;
+    }
+
+    .card-title,
+    .achievement-title {
+        font-size: 1.8rem;
+    }
+
+    .football-ground-container {
+        border: none;
+        box-shadow: none;
+        margin-top: 1rem;
+    }
+
+    .contact-info {
+        gap: 1rem;
+    }
+
+    .info-item {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .info-icon {
+        font-size: 2rem;
+    }
+
+    .info-text h4 {
+        font-size: 1.2rem;
+    }
+
+    .footer-logo-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .footer-text {
+        font-size: 0.8rem;
+    }
+}
+
+

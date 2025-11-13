@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Blue Lock Eleven</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+    <div class="scanline-overlay"></div>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                    <img src="logo.png" alt="Blue Lock Eleven Logo" class="logo">
+                    <span class="team-name">BLUE LOCK ELEVEN</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="specialties.html" class="nav-link">SPECIALTIES</a></li>
+                <li><a href="achievements.html" class="nav-link">ACHIEVEMENTS</a></li>
+                <li><a href="members.html" class="nav-link">MEMBERS</a></li>
+                <li><a href="contact.html" class="nav-link active">CONTACT</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">GET IN TOUCH</h2>
+            <p class="section-subtitle">
+                We are a team of ethical hackers and cybersecurity experts inspired by the Blue Lock anime. 
+                Whether you have a challenge for us, a business inquiry, or want to join our ranks, we'd love to hear from you.
+            </p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">📧</div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p><a href="mailto:contact@bluelockeleven.ctf" class="contact-link">contact@bluelockeleven.ctf</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🐦</div>
+                        <div class="info-text">
+                            <h4>Twitter</h4>
+                            <p><a href="https://twitter.com/BlueLock11CTF" target="_blank" class="contact-link">@BlueLock11CTF</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">💻</div>
+                        <div class="info-text">
+                            <h4>Discord</h4>
+                            <div class="discord-members">
+                                <div class="discord-member">
+                                    <h5>Name: warewolf</h5>
+                                    <p>UserName: warewolf_1011</p>
+                                </div>
+                                <div class="discord-member">
+                                    <h5>Name: iconic_whisper</h5>
+                                    <p>UserName: 0xlazy_particle</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="info-item">
+                        <div class="info-icon">🔗</div>
+                        <div class="info-text">
+                            <h4>LinkedIn</h4>
+                            <p><a href="https://linkedin.com/company/bluelock-eleven" target="_blank" class="contact-link">linkedin.com/company/bluelock-eleven</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Logo" class="footer-logo-img">
+                    <span>BLUE LOCK ELEVEN</span>
+                </div>
+                <p class="footer-text">© 2024 Blue Lock Eleven. CTF Team. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="matrix.js"></script>
+</body>
+</html>

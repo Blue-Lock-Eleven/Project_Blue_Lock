@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Blue Lock Eleven</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+    <div class="scanline-overlay"></div>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                    <img src="logo.png" alt="Blue Lock Eleven Logo" class="logo">
+                    <span class="team-name">BLUE LOCK ELEVEN</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="specialties.html" class="nav-link">SPECIALTIES</a></li>
+                <li><a href="achievements.html" class="nav-link">ACHIEVEMENTS</a></li>
+                <li><a href="members.html" class="nav-link">MEMBERS</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title">ACHIEVEMENTS</h2>
+            <p class="section-subtitle">Our Journey to Excellence</p>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3 class="achievement-title">CTF Champions</h3>
+                    <p class="achievement-description">1st Place in DEF CON CTF Qualifiers 2024</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎯</div>
+                    <h3 class="achievement-title">Perfect Score</h3>
+                    <p class="achievement-description">100% Solve Rate in PicoCTF 2024</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">⚡</div>
+                    <h3 class="achievement-title">Speed Record</h3>
+                    <p class="achievement-description">Fastest PWN Challenge Solve in CTFtime</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🔒</div>
+                    <h3 class="achievement-title">Security Experts</h3>
+                    <p class="achievement-description">Zero-Day Discovery in Web Applications</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🌟</div>
+                    <h3 class="achievement-title">Top 10</h3>
+                    <p class="achievement-description">Ranked #7 Worldwide in CTF Competitions</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">💎</div>
+                    <h3 class="achievement-title">High Status</h3>
+                    <p class="achievement-description">Invited to Hacker Conferences</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Logo" class="footer-logo-img">
+                    <span>BLUE LOCK ELEVEN</span>
+                </div>
+                <p class="footer-text">© 2024 Blue Lock Eleven. CTF Team. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="matrix.js"></script>
+</body>
+</html>
+

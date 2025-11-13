@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Blue Lock Eleven</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+    <div class="scanline-overlay"></div>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                    <img src="logo.png" alt="Blue Lock Eleven Logo" class="logo">
+                    <span class="team-name">BLUE LOCK ELEVEN</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="specialties.html" class="nav-link">SPECIALTIES</a></li>
+                <li><a href="achievements.html" class="nav-link">ACHIEVEMENTS</a></li>
+                <li><a href="members.html" class="nav-link">MEMBERS</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">ABOUT US</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-description">
+                        Inspired by the <span class="highlight">Blue Lock</span> anime, we are a CTF team dedicated to pushing the boundaries of cybersecurity. 
+                        Just like the protagonists who strive for soccer excellence, we relentlessly pursue perfection in every challenge we face.
+                    </p>
+                    <p class="about-description">
+                        Our team consists of <span class="highlight">professional hackers</span> who specialize in multiple domains of cybersecurity, 
+                        combining individual expertise to form an unstoppable force in the competitive CTF arena.
+                    </p>
+                    <p class="about-description">
+                        We believe in the Blue Lock philosophy - only the best can survive. Through intense competition and continuous learning, 
+                        we hone our skills to become the ultimate cybersecurity specialists. Each member brings unique expertise, and together, 
+                        we form an unbeatable team that dominates every competition.
+                    </p>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">Challenges Solved</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">CTF Competitions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="6">0</div>
+                        <div class="stat-label">Specialties</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Logo" class="footer-logo-img">
+                    <span>BLUE LOCK ELEVEN</span>
+                </div>
+                <p class="footer-text">© 2024 Blue Lock Eleven. CTF Team. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="matrix.js"></script>
+</body>
+</html>
+
+
+

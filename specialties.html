@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialties - Blue Lock Eleven</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+    <div class="scanline-overlay"></div>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                    <img src="logo.png" alt="Blue Lock Eleven Logo" class="logo">
+                    <span class="team-name">BLUE LOCK ELEVEN</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="specialties.html" class="nav-link">SPECIALTIES</a></li>
+                <li><a href="achievements.html" class="nav-link">ACHIEVEMENTS</a></li>
+                <li><a href="members.html" class="nav-link">MEMBERS</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Specialties Section -->
+    <section id="specialties" class="specialties">
+        <div class="container">
+            <h2 class="section-title">OUR SPECIALTIES</h2>
+            <p class="section-subtitle">Mastering Every Domain of Cybersecurity</p>
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <div class="card-icon">💥</div>
+                    <h3 class="card-title">PWN</h3>
+                    <p class="card-description">Exploiting vulnerabilities, buffer overflows, and binary exploitation mastery.</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="specialty-card">
+                    <div class="card-icon">🔄</div>
+                    <h3 class="card-title">REVERSE</h3>
+                    <p class="card-description">Decompiling binaries, analyzing malware, and understanding code architecture.</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="specialty-card">
+                    <div class="card-icon">🕸️</div>
+                    <h3 class="card-title">WEB</h3>
+                    <p class="card-description">Web application security, SQL injection, XSS, and modern web exploitation.</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="specialty-card">
+                    <div class="card-icon">🔐</div>
+                    <h3 class="card-title">CRYPTO</h3>
+                    <p class="card-description">Cryptanalysis, RSA, encryption schemes, and breaking cryptographic implementations.</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="specialty-card">
+                    <div class="card-icon">🔍</div>
+                    <h3 class="card-title">FORENSICS</h3>
+                    <p class="card-description">Digital investigation, memory analysis, network forensics, and data recovery.</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="specialty-card">
+                    <div class="card-icon">⛓️</div>
+                    <h3 class="card-title">BLOCKCHAIN</h3>
+                    <p class="card-description">Smart contract auditing, DeFi security, and blockchain vulnerability research.</p>
+                    <div class="card-shine"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Logo" class="footer-logo-img">
+                    <span>BLUE LOCK ELEVEN</span>
+                </div>
+                <p class="footer-text">© 2024 Blue Lock Eleven. CTF Team. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="matrix.js"></script>
+</body>
+</html>
+
