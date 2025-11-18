@@ -1,32 +1,59 @@
 /* Responsive Design */
 
+body.menu-open {
+    overflow: hidden;
+}
+
 /* Tablets and small desktops */
 @media (max-width: 992px) {
     .nav-container {
         padding: 0 1.5rem;
+        justify-content: space-between;
     }
 
     .nav-menu {
         display: none; /* Hidden by default, shown via JS */
         flex-direction: column;
         position: absolute;
-        top: 70px;
+        top: 75px;
         left: 0;
+        right: 0;
         width: 100%;
         background: rgba(0, 17, 34, 0.98);
         backdrop-filter: blur(15px);
         border-bottom: 1px solid var(--primary-blue);
         padding: 2rem 0;
         z-index: 999;
+        gap: 0.75rem;
+        max-height: calc(100vh - 75px);
+        overflow-y: auto;
+        text-align: center;
     }
 
     .nav-menu.active {
         display: flex;
     }
 
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem 0;
+    }
+
     .hamburger {
         display: flex;
         z-index: 1001;
+        padding: 0.5rem;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
     }
 
     .hero-title {
@@ -121,44 +148,135 @@
         padding: 2rem;
     }
 
+    section {
+        background-attachment: scroll;
+        min-height: auto;
+        padding: 100px 1.25rem 2rem;
+    }
+
     .footer {
         padding: 2rem 1rem;
     }
 
-    .football-ground {
-        min-height: 700px; /* Adjust to allow more space for cards */
-        display: none;
+    .members-layout {
+        width: 100%;
+        gap: 1.25rem;
     }
 
-    .members-cards-container {
-        position: static;
+    .football-ground-container {
+        width: 100%;
+        padding: 1.25rem;
+        background: rgba(0, 15, 30, 0.95);
+        border: 1px solid rgba(0, 212, 255, 0.35);
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        align-items: center; /* Center cards when stacked */
     }
 
-    .member-card-wrapper {
+    .football-ground {
+        display: none;
+    }
+
+    .members-cards-field {
         position: static;
-        width: 80%; /* Make cards take more width */
-        max-width: 300px; /* Limit max width */
+        inset: 0;
+        border: none;
+        width: 100%;
         height: auto;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin: 0;
+        pointer-events: auto;
+    }
+
+    .members-cards-field .member-card-wrapper {
+        position: relative;
+        transform: none;
+        width: 100%;
+        height: 200px;
+    }
+
+    .members-cards-panel {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .reserve-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+
+    .reserve-cards-container .member-card-wrapper {
+        height: clamp(180px, 30vw, 220px);
+        max-width: 240px;
     }
 
     .member-card {
-        transform-style: preserve-3d; /* Re-enable 3D for flipping */
-        height: 250px; /* Give a fixed height for consistency */
+        display: block;
+        height: 100%;
+        width: 100%;
     }
 
     .card-front,
     .card-back {
-        position: absolute; /* Needed for layering */
-        backface-visibility: hidden; /* Hide the back of the card initially */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem;
     }
 
     .card-back {
-        transform: rotateY(180deg); /* Keep the back rotated */
-        padding: 1rem;
+        padding: 0.75rem;
+    }
+}
+
+/* Small mobile helper breakpoint */
+@media (max-width: 600px) {
+    .nav-container {
+        padding: 0 1.25rem;
+    }
+
+    .nav-menu {
+        top: 65px;
+        max-height: calc(100vh - 65px);
+    }
+
+    .hero {
+        padding: 90px 1.25rem 2rem;
+    }
+
+    .hero-description {
+        margin-bottom: 1.5rem;
+    }
+
+    .terminal-window {
+        width: 100%;
+    }
+
+    .stats {
+        gap: 1.25rem;
+    }
+
+    .members-cards-field,
+    .reserve-cards-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .members-cards-field .member-card-wrapper,
+    .reserve-cards-container .member-card-wrapper {
+        height: 190px;
+        max-width: none;
+    }
+
+    .member-name {
+        font-size: 1.3rem;
+    }
+
+    .member-specialty {
+        font-size: 0.8rem;
     }
 }
 
@@ -185,22 +303,33 @@
         font-size: 2rem;
     }
 
-    .member-card-wrapper {
-        width: 95%; /* Even wider for very small screens */
-        max-width: 180px; /* Smaller max width */
+    .members-cards-field,
+    .reserve-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.85rem;
+    }
+
+    .members-cards-field .member-card-wrapper,
+    .reserve-cards-container .member-card-wrapper {
+        height: clamp(150px, 45vw, 180px);
+        max-width: 160px;
+    }
+
+    .member-number {
+        font-size: 1.1rem;
     }
 
     .member-name {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
     }
 
     .member-specialty {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     .stat-badge {
-        font-size: 0.7rem;
-        padding: 0.3rem;
+        font-size: 0.6rem;
+        padding: 0.2rem;
     }
 
     .contact-form-wrapper {

@@ -2,18 +2,43 @@
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
+if (hamburger && navMenu) {
+    const navLinks = navMenu.querySelectorAll('.nav-link');
 
-// Close menu when clicking on nav links
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
+    const toggleMenu = (isOpenForced) => {
+        const shouldOpen = typeof isOpenForced === 'boolean'
+            ? isOpenForced
+            : !navMenu.classList.contains('active');
+
+        navMenu.classList.toggle('active', shouldOpen);
+        hamburger.classList.toggle('active', shouldOpen);
+        document.body.classList.toggle('menu-open', shouldOpen);
+        hamburger.setAttribute('aria-expanded', shouldOpen);
+    };
+
+    hamburger.setAttribute('role', 'button');
+    hamburger.setAttribute('tabindex', '0');
+    hamburger.setAttribute('aria-label', 'Toggle navigation menu');
+    hamburger.setAttribute('aria-expanded', 'false');
+
+    hamburger.addEventListener('click', () => toggleMenu());
+    hamburger.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleMenu();
+        }
     });
-});
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 992) {
+            toggleMenu(false);
+        }
+    });
+}
 
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -329,48 +354,6 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-// Member Card Hover Glitch
-document.querySelectorAll('.member-card-wrapper').forEach(wrapper => {
-    wrapper.addEventListener('mouseenter', () => {
-        wrapper.classList.add('glitch-effect');
-    });
-    wrapper.addEventListener('animationend', () => {
-        wrapper.classList.remove('glitch-effect');
-    });
-});
-
-// Member Card Click Functionality
-document.querySelectorAll('.member-card-wrapper').forEach(wrapper => {
-    const card = wrapper.querySelector('.member-card');
-    
-    // Click to flip
-    wrapper.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const isClicked = this.classList.contains('clicked');
-        
-        // Close all other cards
-        document.querySelectorAll('.member-card-wrapper').forEach(other => {
-            if (other !== this) {
-                other.classList.remove('clicked');
-            }
-        });
-        
-        // Toggle current card
-        if (isClicked) {
-            this.classList.remove('clicked');
-        } else {
-            this.classList.add('clicked');
-        }
-    });
-    
-    // Close card when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!wrapper.contains(e.target)) {
-            wrapper.classList.remove('clicked');
-        }
-    });
-});
-
 // Console easter egg
 console.log('%c⚽ BLUE LOCK ELEVEN ⚽', 'color: #00D4FF; font-size: 30px; font-weight: bold; text-shadow: 0 0 10px #00D4FF;');
 console.log('%cCTF Team | Professional Hackers', 'color: #00FFFF; font-size: 14px;');
@@ -378,8 +361,16 @@ console.log('%cLooking for talent? Contact us!', 'color: #B0B0B0; font-size: 12p
 
 // --- Members Page Functionality ---
 document.addEventListener('DOMContentLoaded', () => {
-    const membersContainer = document.getElementById('members-cards-container');
-    if (!membersContainer) return;
+    const fieldContainer = document.getElementById('members-field-container');
+    const reserveContainer = document.getElementById('members-reserve-container');
+    if (!fieldContainer && !reserveContainer) return;
+
+    const closeAllCards = () => {
+        document.querySelectorAll('.member-card-wrapper').forEach(wrapper => {
+            wrapper.classList.remove('clicked');
+            wrapper.setAttribute('aria-pressed', 'false');
+        });
+    };
 
     const players = [
         // Strikers
@@ -395,19 +386,23 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Aiku', specialty: 'REVERSE', number: 3, avatar: 'card.png', stats: ['Leadership', 'Binary Analysis', 'Defense'], position: { x: '65%', y: '30%' } },
         { name: 'Niko', specialty: 'FORENSICS', number: 5, avatar: 'card.png', stats: ['Vision', 'Stealth', 'Log Analysis'], position: { x: '35%', y: '30%' } },
         // Extra Players
-        { name: 'Barou', specialty: 'PWN', number: 13, avatar: 'card.png', stats: ['King', 'Exploitation', 'Intimidation'], position: { x: '75%', y: '90%' } },
-        { name: 'Shidou', specialty: 'CRYPTO', number: 16, avatar: 'card.png', stats: ['Extreme Goal', 'Aggression', 'Brute Force'], position: { x: '25%', y: '90%' } },
-        // Coach and Extras
-        { name: 'Ego', specialty: 'Coach', number: '★', avatar: 'card.png', stats: ['Mastermind', 'Strategy', 'Egoism'], position: { x: '50%', y: '110%' } },
-        { name: 'Anri', specialty: 'Manager', number: '📝', avatar: 'card.png', stats: ['Management', 'Support', 'Logistics'], position: { x: '30%', y: '110%' } },
-        { name: 'Sae', specialty: 'Genius', number: '10', avatar: 'card.png', stats: ['Prodigy', 'Vision', 'Passing'], position: { x: '70%', y: '110%' } },
+        { name: 'Barou', specialty: 'PWN', number: 13, avatar: 'card.png', stats: ['King', 'Exploitation', 'Intimidation'], position: { x: '75%', y: '90%' }, showInPanel: true },
+        { name: 'Shidou', specialty: 'CRYPTO', number: 16, avatar: 'card.png', stats: ['Extreme Goal', 'Aggression', 'Brute Force'], position: { x: '25%', y: '90%' }, showInPanel: true },
+        // Staff / Bench
+        { name: 'Ego', specialty: 'Coach', number: '★', avatar: 'card.png', stats: ['Mastermind', 'Strategy', 'Egoism'], showInPanel: true, panelOnly: true }
     ];
 
-    players.forEach(player => {
+    const createCard = (player, options = {}) => {
         const cardWrapper = document.createElement('div');
         cardWrapper.className = 'member-card-wrapper';
-        cardWrapper.style.setProperty('--position-x', player.position.x);
-        cardWrapper.style.setProperty('--position-y', player.position.y);
+        if (player.position && options.isField) {
+            cardWrapper.style.setProperty('--position-x', player.position.x);
+            cardWrapper.style.setProperty('--position-y', player.position.y);
+        }
+
+        cardWrapper.setAttribute('tabindex', '0');
+        cardWrapper.setAttribute('role', 'button');
+        cardWrapper.setAttribute('aria-pressed', 'false');
 
         const card = document.createElement('div');
         card.className = 'member-card';
@@ -433,32 +428,72 @@ document.addEventListener('DOMContentLoaded', () => {
         card.appendChild(cardFront);
         card.appendChild(cardBack);
         cardWrapper.appendChild(card);
-        membersContainer.appendChild(cardWrapper);
+        return cardWrapper;
+    };
 
-        // Click to flip logic
-        cardWrapper.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const isClicked = this.classList.contains('clicked');
-            
-            // Close all other cards
+    const attachCardInteractions = (cardWrapper) => {
+        const toggleCard = () => {
+            const isClicked = cardWrapper.classList.contains('clicked');
+
             document.querySelectorAll('.member-card-wrapper').forEach(other => {
-                if (other !== this) {
+                if (other !== cardWrapper) {
                     other.classList.remove('clicked');
+                    other.setAttribute('aria-pressed', 'false');
                 }
             });
-            
-            // Toggle current card
-            this.classList.toggle('clicked');
+
+            cardWrapper.classList.toggle('clicked', !isClicked);
+            cardWrapper.setAttribute('aria-pressed', String(!isClicked));
+        };
+
+        const handlePointer = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            toggleCard();
+        };
+
+        cardWrapper.addEventListener('click', handlePointer);
+        cardWrapper.addEventListener('touchstart', handlePointer, { passive: false });
+        cardWrapper.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                handlePointer(event);
+            }
         });
+    };
+
+    const fieldPlayers = players.filter(player => player.position && !player.panelOnly);
+    const reservePlayers = players.filter(player => player.showInPanel);
+
+    if (fieldContainer) {
+        fieldPlayers.forEach(player => {
+            const card = createCard(player, { isField: true });
+            fieldContainer.appendChild(card);
+            attachCardInteractions(card);
+        });
+    }
+
+    if (reserveContainer) {
+        reservePlayers.forEach(player => {
+            const card = createCard(player);
+            reserveContainer.appendChild(card);
+            attachCardInteractions(card);
+        });
+    }
+
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.member-card-wrapper')) {
+            closeAllCards();
+        }
     });
 
     // Close all cards when clicking on the background
-    document.querySelector('.football-ground-container').addEventListener('click', function(e) {
-        if (e.target === this || e.target.classList.contains('football-ground')) {
-            document.querySelectorAll('.member-card-wrapper').forEach(wrapper => {
-                wrapper.classList.remove('clicked');
-            });
-        }
-    });
+    const ground = document.querySelector('.football-ground-container');
+    if (ground) {
+        ground.addEventListener('click', function(e) {
+            if (e.target === this || e.target.classList.contains('football-ground')) {
+                closeAllCards();
+            }
+        });
+    }
 });
 

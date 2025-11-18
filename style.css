@@ -23,6 +23,15 @@ body {
     color: var(--text-white);
     overflow-x: hidden;
     position: relative;
+    font-size: clamp(15px, 1vw + 12px, 16px);
+    line-height: 1.6;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 #matrix-canvas {
@@ -136,6 +145,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .logo-container {
@@ -158,7 +169,7 @@ body {
 
 .team-name {
     font-family: 'VT323', monospace;
-    font-size: 2rem;
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
     font-weight: 900;
     letter-spacing: 3px;
     background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
@@ -172,6 +183,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-link {
@@ -229,6 +241,18 @@ body {
     transition: all 0.3s ease;
 }
 
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -280,7 +304,7 @@ body {
 
 .hero-title {
     font-family: 'VT323', monospace;
-    font-size: 6rem;
+    font-size: clamp(3rem, 10vw, 6rem);
     font-weight: 900;
     margin-bottom: 1rem;
     position: relative;
@@ -315,18 +339,18 @@ body {
 
 .hero-subtitle {
     font-family: 'VT323', monospace;
-    font-size: 2rem;
+    font-size: clamp(1.1rem, 4vw, 2rem);
     color: var(--primary-blue);
     margin-bottom: 1rem;
-    letter-spacing: 5px;
+    letter-spacing: clamp(3px, 1.2vw, 5px);
     text-shadow: 0 0 20px var(--primary-blue);
 }
 
 .hero-description {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     color: var(--text-gray);
     margin-bottom: 2rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 /* Terminal Window */
@@ -432,7 +456,7 @@ body {
 /* Section Styles */
 section {
     min-height: 100vh;
-    padding: 120px 2rem 2rem;
+    padding: clamp(100px, 12vh, 140px) clamp(1.5rem, 4vw, 3rem) clamp(2rem, 6vw, 4rem);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -443,6 +467,12 @@ section {
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+    section {
+        background-attachment: scroll;
+    }
 }
 
 section::before {
@@ -462,11 +492,12 @@ section::before {
     width: 100%;
     position: relative;
     z-index: 2;
+    padding: 0 1.5rem;
 }
 
 .section-title {
     font-family: 'VT323', monospace;
-    font-size: 4.5rem;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
     font-weight: 900;
     text-align: center;
     margin-bottom: 1rem;
@@ -474,7 +505,7 @@ section::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: 5px;
+    letter-spacing: clamp(3px, 1vw, 5px);
     position: relative;
     animation: titleGlow 3s ease-in-out infinite;
 }
@@ -493,7 +524,7 @@ section::before {
 .section-subtitle {
     text-align: center;
     color: var(--text-gray);
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     margin-bottom: 4rem;
 }
 
@@ -542,7 +573,7 @@ section::before {
 /* Stats */
 .stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -584,7 +615,7 @@ section::before {
 
 .specialties-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
 }
 
@@ -673,7 +704,7 @@ section::before {
 
 .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
     margin-top: 4rem;
 }
@@ -740,42 +771,93 @@ section::before {
     background: linear-gradient(135deg, rgba(0, 10, 20, 0.92) 0%, rgba(0, 17, 34, 0.88) 100%);
 }
 
+.members-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+
 .football-ground-container {
     position: relative;
-    max-width: 1400px;
-    margin: 4rem auto 0;
-    border-radius: 20px;
-    box-shadow: 0 0 50px var(--glow-blue);
-    border: 3px solid var(--primary-blue);
-    animation: border-pulse 4s ease-in-out infinite reverse;
+    width: min(100%, 960px);
+    border-radius: 24px;
+    box-shadow: 0 0 60px rgba(0, 212, 255, 0.35);
+    border: 2px solid rgba(0, 212, 255, 0.6);
+    padding: clamp(0.75rem, 3vw, 1.5rem);
+    background: radial-gradient(circle at top, rgba(0, 212, 255, 0.25), rgba(0, 0, 0, 0.75));
+    overflow: hidden;
 }
 
 .football-ground {
     width: 100%;
     height: auto;
-    display: block;
-    min-height: 600px;
     object-fit: cover;
+    opacity: 0.45;
+    border-radius: 16px;
 }
 
-.members-cards-container {
+.members-cards-field {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: clamp(0.5rem, 3vw, 1.8rem);
+    border-radius: 18px;
+    border: 1px dashed rgba(0, 212, 255, 0.35);
     pointer-events: none;
 }
 
+.members-cards-panel {
+    width: min(100%, 780px);
+    background: rgba(0, 15, 30, 0.92);
+    border: 1px solid rgba(0, 212, 255, 0.5);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.panel-title {
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+
+.panel-subtitle {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.reserve-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    pointer-events: auto;
+}
+
 .member-card-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.members-cards-field .member-card-wrapper {
     position: absolute;
     left: var(--position-x, 50%);
     top: var(--position-y, 50%);
     transform: translate(-50%, -50%);
-    width: 150px;
-    height: 200px;
+    width: 110px;
+    height: 150px;
     pointer-events: all;
-    perspective: 1000px;
+}
+
+.reserve-cards-container .member-card-wrapper {
+    width: 100%;
+    height: 170px;
 }
 
 .member-card {
@@ -891,19 +973,6 @@ section::before {
 .stat-badge:hover {
     background: rgba(0, 212, 255, 0.3);
     transform: scale(1.05);
-}
-
-.glitch-effect {
-    animation: glitch-card 0.5s infinite;
-}
-
-@keyframes glitch-card {
-    0% { transform: translate(0); }
-    20% { transform: translate(-3px, 3px); }
-    40% { transform: translate(-3px, -3px); }
-    60% { transform: translate(3px, 3px); }
-    80% { transform: translate(3px, -3px); }
-    100% { transform: translate(0); }
 }
 
 /* Responsive adjustments for member cards */
