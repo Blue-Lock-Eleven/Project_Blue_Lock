@@ -320,6 +320,48 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Copy username buttons
+const copyButtons = document.querySelectorAll('.copy-username-btn');
+if (copyButtons.length) {
+    const copyText = async (text) => {
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text);
+        }
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.top = '-1000px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    };
+
+    copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+            const username = button.getAttribute('data-copy');
+            if (!username) return;
+            const originalText = button.textContent.trim();
+            try {
+                await copyText(username);
+                button.textContent = 'COPIED!';
+                button.classList.add('copied');
+            } catch (err) {
+                button.textContent = 'FAILED';
+                console.error('Copy failed:', err);
+            } finally {
+                button.disabled = true;
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                    button.disabled = false;
+                }, 1600);
+            }
+        });
+    });
+}
+
 // Lazy load images
 const images = document.querySelectorAll('img');
 const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -373,23 +415,25 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const players = [
-        // Strikers
-        { name: 'Isagi', specialty: 'PWN', number: 11, avatar: 'card.png', stats: ['Metavision', 'Direct Shot', 'Adaptability'], position: { x: '50%', y: '85%' } },
-        { name: 'Bachira', specialty: 'WEB', number: 8, avatar: 'card.png', stats: ['Dribbling', 'Creativity', 'XSS Master'], position: { x: '30%', y: '75%' } },
-        { name: 'Nagi', specialty: 'REVERSE', number: 7, avatar: 'card.png', stats: ['Trapping', 'Genius IQ', 'Obfuscation'], position: { x: '70%', y: '75%' } },
-        // Midfielders
-        { name: 'Rin', specialty: 'CRYPTO', number: 10, avatar: 'card.png', stats: ['Puppet Master', 'Decryption', 'Flow State'], position: { x: '50%', y: '60%' } },
-        { name: 'Chigiri', specialty: 'FORENSICS', number: 4, avatar: 'card.png', stats: ['Speed', 'Data Recovery', 'Analysis'], position: { x: '20%', y: '50%' } },
-        { name: 'Reo', specialty: 'BLOCKCHAIN', number: 9, avatar: 'card.png', stats: ['Copy', 'Versatility', 'Smart Contract Audit'], position: { x: '80%', y: '50%' } },
-        // Defenders
-        { name: 'Gagamaru', specialty: 'MISC', number: 1, avatar: 'card.png', stats: ['Reflexes', 'Hardware', 'Physicality'], position: { x: '50%', y: '15%' } },
-        { name: 'Aiku', specialty: 'REVERSE', number: 3, avatar: 'card.png', stats: ['Leadership', 'Binary Analysis', 'Defense'], position: { x: '65%', y: '30%' } },
-        { name: 'Niko', specialty: 'FORENSICS', number: 5, avatar: 'card.png', stats: ['Vision', 'Stealth', 'Log Analysis'], position: { x: '35%', y: '30%' } },
-        // Extra Players
-        { name: 'Barou', specialty: 'PWN', number: 13, avatar: 'card.png', stats: ['King', 'Exploitation', 'Intimidation'], position: { x: '75%', y: '90%' }, showInPanel: true },
-        { name: 'Shidou', specialty: 'CRYPTO', number: 16, avatar: 'card.png', stats: ['Extreme Goal', 'Aggression', 'Brute Force'], position: { x: '25%', y: '90%' }, showInPanel: true },
-        // Staff / Bench
-        { name: 'Ego', specialty: 'Coach', number: '★', avatar: 'card.png', stats: ['Mastermind', 'Strategy', 'Egoism'], showInPanel: true, panelOnly: true }
+        // GK row - Gagamaru (1)
+        { name: 'Gagamaru', specialty: 'MISC', number: 1, avatar: 'card.png', stats: ['Reflexes', 'Hardware', 'Physicality'], portfolio: '#', position: { x: '50%', y: '18%' } },
+        // Defensive line (3, 2, 25) -> Aiku, Niko, Raichi(25)
+        { name: 'Aiku', specialty: 'REVERSE', number: 3, avatar: 'card.png', stats: ['Leadership', 'Binary Analysis', 'Defense'], portfolio: '#', position: { x: '26%', y: '34%' } },
+        { name: 'Niko', specialty: 'FORENSICS', number: 5, avatar: 'card.png', stats: ['Vision', 'Stealth', 'Log Analysis'], portfolio: '#', position: { x: '50%', y: '34%' } },
+        { name: 'Raichi', specialty: 'MISC', number: 25, avatar: 'card.png', stats: ['Marking', 'Stamina', 'Trash Talk'], portfolio: '#', position: { x: '74%', y: '34%' } },
+        // Midfield duo (Reo + Shidou)
+        { name: 'Reo', specialty: 'BLOCKCHAIN', number: 9, avatar: 'card.png', stats: ['Copy', 'Versatility', 'Smart Contract Audit'], portfolio: '#', position: { x: '42%', y: '50%' } },
+        { name: 'Shidou', specialty: 'CRYPTO', number: 16, avatar: 'card.png', stats: ['Extreme Goal', 'Aggression', 'Brute Force'], portfolio: '#', position: { x: '58%', y: '50%' }, showInPanel: true },
+        // Attacking four behind Rin: Bachira, Isagi, Nagi, Chigiri
+        { name: 'Bachira', specialty: 'WEB', number: 8, avatar: 'card.png', stats: ['Dribbling', 'Creativity', 'XSS Master'], portfolio: '#', position: { x: '22%', y: '68%' } },
+        { name: 'Isagi', specialty: 'PWN', number: 11, avatar: 'card.png', stats: ['Metavision', 'Direct Shot', 'Adaptability'], portfolio: '#', position: { x: '38%', y: '66%' } },
+        { name: 'Nagi', specialty: 'REVERSE', number: 7, avatar: 'card.png', stats: ['Trapping', 'Genius IQ', 'Obfuscation'], portfolio: '#', position: { x: '62%', y: '66%' } },
+        { name: 'Chigiri', specialty: 'FORENSICS', number: 4, avatar: 'card.png', stats: ['Speed', 'Data Recovery', 'Analysis'], portfolio: '#', position: { x: '78%', y: '68%' } },
+        // Lone striker - Rin
+        { name: 'Rin (0xtheM7)', specialty: 'WEB / BUG HUNTING', number: 10, avatar: 'card.png', stats: ['Bug Bounty', 'Web Exploitation', 'Flow State'], portfolio: 'https://himansu.com.np/', position: { x: '50%', y: '82%' } },
+        // Bench / extras: Barou (extra only) + Ego
+        { name: 'Barou', specialty: 'PWN', number: 13, avatar: 'card.png', stats: ['King', 'Exploitation', 'Intimidation'], portfolio: '#', showInPanel: true, panelOnly: true },
+        { name: 'Ego', specialty: 'Coach', number: '★', avatar: 'card.png', stats: ['Mastermind', 'Strategy', 'Egoism'], portfolio: '#', showInPanel: true, panelOnly: true }
     ];
 
     const createCard = (player, options = {}) => {
@@ -422,6 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardBack.innerHTML = `
             <h3 class="member-name">${player.name}</h3>
             <p class="member-specialty">${player.specialty}</p>
+            ${player.portfolio ? `<a href="${player.portfolio}" target="_blank" rel="noopener noreferrer" class="member-portfolio-link">PORTFOLIO</a>` : ''}
             <div class="member-stats">${statsHTML}</div>
         `;
 
@@ -447,6 +492,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const handlePointer = (event) => {
+            if (event.target.closest('.member-portfolio-link')) {
+                return;
+            }
             event.preventDefault();
             event.stopPropagation();
             toggleCard();
@@ -455,6 +503,9 @@ document.addEventListener('DOMContentLoaded', () => {
         cardWrapper.addEventListener('click', handlePointer);
         cardWrapper.addEventListener('touchstart', handlePointer, { passive: false });
         cardWrapper.addEventListener('keypress', (event) => {
+            if (event.target.closest('.member-portfolio-link')) {
+                return;
+            }
             if (event.key === 'Enter' || event.key === ' ') {
                 handlePointer(event);
             }

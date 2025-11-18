@@ -781,13 +781,14 @@ section::before {
 
 .football-ground-container {
     position: relative;
-    width: min(100%, 960px);
+    width: min(100%, 1200px);
     border-radius: 24px;
     box-shadow: 0 0 60px rgba(0, 212, 255, 0.35);
     border: 2px solid rgba(0, 212, 255, 0.6);
     padding: clamp(0.75rem, 3vw, 1.5rem);
     background: radial-gradient(circle at top, rgba(0, 212, 255, 0.25), rgba(0, 0, 0, 0.75));
     overflow: hidden;
+    min-height: clamp(520px, 60vw, 650px);
 }
 
 .football-ground {
@@ -804,10 +805,11 @@ section::before {
     border-radius: 18px;
     border: 1px dashed rgba(0, 212, 255, 0.35);
     pointer-events: none;
+    min-height: clamp(480px, 55vw, 600px);
 }
 
 .members-cards-panel {
-    width: min(100%, 780px);
+    width: min(100%, 880px);
     background: rgba(0, 15, 30, 0.92);
     border: 1px solid rgba(0, 212, 255, 0.5);
     border-radius: 20px;
@@ -833,8 +835,8 @@ section::before {
 
 .reserve-cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
     pointer-events: auto;
 }
 
@@ -850,14 +852,45 @@ section::before {
     left: var(--position-x, 50%);
     top: var(--position-y, 50%);
     transform: translate(-50%, -50%);
-    width: 110px;
-    height: 150px;
+    width: 150px;
+    height: 220px;
     pointer-events: all;
+}
+
+.members-cards-field .card-front,
+.members-cards-field .card-back {
+    padding: 0.6rem;
+    justify-content: flex-start;
+}
+
+.members-cards-field .member-name {
+    font-size: 1rem;
+    line-height: 1.2;
+    text-align: center;
+    word-break: break-word;
+}
+
+.members-cards-field .member-specialty {
+    font-size: 0.7rem;
+    margin-bottom: 0.25rem;
+    text-align: center;
+}
+
+.members-cards-field .member-stats {
+    gap: 0.2rem;
+    margin-top: 0.15rem;
+}
+
+.members-cards-field .stat-badge {
+    font-size: 0.5rem;
+    padding: 0.16rem 0.26rem;
 }
 
 .reserve-cards-container .member-card-wrapper {
     width: 100%;
-    height: 170px;
+    min-height: 320px;
+    height: auto;
+    max-width: 340px;
 }
 
 .member-card {
@@ -956,7 +989,31 @@ section::before {
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
+}
+
+.member-portfolio-link {
+    margin-top: 0.5rem;
+    align-self: stretch;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'VT323', monospace;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+    background: rgba(0, 17, 34, 0.8);
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.55);
+    transition: all 0.3s ease;
+}
+
+.member-portfolio-link:hover,
+.member-portfolio-link:focus-visible {
+    background: var(--primary-blue);
+    color: var(--darker-blue);
+    box-shadow: 0 0 20px var(--glow-blue);
 }
 
 .stat-badge {
@@ -978,8 +1035,8 @@ section::before {
 /* Responsive adjustments for member cards */
 @media (max-width: 968px) {
     .member-card-wrapper {
-        width: 120px;
-        height: 160px;
+        width: 110px;
+        height: 185px;
     }
 
     .member-name {
@@ -998,8 +1055,8 @@ section::before {
 
 @media (max-width: 576px) {
     .member-card-wrapper {
-        width: 100px;
-        height: 140px;
+        width: 95px;
+        height: 150px;
     }
 
     .member-number {
@@ -1175,6 +1232,74 @@ section::before {
 .contact-link:hover {
     color: var(--primary-blue);
     text-shadow: 0 0 10px var(--primary-blue);
+}
+
+.discord-members {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.discord-member {
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    border-radius: 12px;
+    padding: 1rem;
+    background: rgba(0, 17, 34, 0.6);
+    box-shadow: inset 0 0 20px rgba(0, 212, 255, 0.08);
+}
+
+.discord-member h5 {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.username-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.username-row p {
+    margin: 0;
+    color: var(--text-white);
+    letter-spacing: 1px;
+}
+
+.username-value {
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.copy-username-btn {
+    border: 1px solid var(--primary-blue);
+    background: transparent;
+    color: var(--primary-blue);
+    font-family: 'VT323', monospace;
+    letter-spacing: 2px;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.copy-username-btn:hover,
+.copy-username-btn:focus-visible {
+    background: var(--primary-blue);
+    color: var(--darker-blue);
+    box-shadow: 0 0 20px var(--glow-blue);
+}
+
+.copy-username-btn.copied {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: var(--darker-blue);
 }
 
 /* Footer */
