@@ -1373,3 +1373,59 @@ section::before {
     text-shadow: 0 0 10px var(--primary-blue);
 }
 
+.ctf-list-card {
+    grid-column: span 2; /* Make it wider if needed */
+}
+
+.ctf-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.ctf-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.ctf-item:last-child {
+    border-bottom: none;
+}
+
+.ctf-name {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: var(--primary-blue);
+    font-weight: 500;
+}
+
+.ctf-rank {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: var(--neon-green);
+    background: rgba(0, 255, 136, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    border: 1px solid var(--neon-green);
+}
+
+/* Responsive design for the CTF list */
+@media (max-width: 768px) {
+    .ctf-list-card {
+        grid-column: span 1;
+    }
+    
+    .ctf-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+    
+    .ctf-rank {
+        align-self: flex-end;
+    }
+}
