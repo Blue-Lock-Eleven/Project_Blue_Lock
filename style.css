@@ -158,7 +158,6 @@ video {
 .logo {
     width: 50px;
     height: 50px;
-    animation: logoRotate 10s linear infinite;
     filter: drop-shadow(0 0 10px var(--primary-blue));
 }
 
@@ -852,7 +851,7 @@ section::before {
     left: var(--position-x, 50%);
     top: var(--position-y, 50%);
     transform: translate(-50%, -50%);
-    width: 150px;
+    width: 180px;
     height: 220px;
     pointer-events: all;
 }
@@ -879,6 +878,28 @@ section::before {
 .members-cards-field .member-stats {
     gap: 0.2rem;
     margin-top: 0.15rem;
+}
+
+/* Larger stats for member cards */
+.member-card .stat-badge {
+    font-size: 1rem; /* Increased from 0.85rem */
+    padding: 0.75rem 0.5rem; /* Increased padding */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* For field player cards (smaller versions) */
+.members-cards-field .member-card .stat-badge {
+    font-size: 0.7rem; /* Increased from 0.5rem */
+    padding: 0.4rem 0.3rem; /* Increased padding */
+    font-weight: 600;
+}
+
+/* For reserve panel cards */
+.reserve-cards-container .member-card .stat-badge {
+    font-size: 0.9rem; /* Slightly smaller than main cards but larger than before */
+    padding: 0.6rem 0.4rem;
+    font-weight: 600;
 }
 
 .members-cards-field .stat-badge {

@@ -101,9 +101,9 @@ if (typingText) {
 }
 
 // Animated Counter for Stats
-function animateCounter(element, target, duration = 2000) {
+function animateCounter(element, target, duration = 800) {
   let start = 0;
-  const increment = target / (duration / 16);
+  const increment = target / (duration / 10);
 
   const shouldAddPlus = element.textContent.includes("+");
 
@@ -115,7 +115,7 @@ function animateCounter(element, target, duration = 2000) {
     } else {
       element.textContent = Math.floor(start) + (shouldAddPlus ? "+" : "");
     }
-  }, 1);
+  }, 10);
 }
 
 // Intersection Observer for scroll animations
@@ -445,100 +445,99 @@ document.addEventListener("DOMContentLoaded", () => {
   const players = [
     // GK row - Gagamaru (1)
     {
-      name: "Gagamaru",
+      name: "Gagamaru (bbh@@yu)",
       specialty: "MISC",
       number: 1,
       avatar: "card.png",
-      stats: ["Reflexes", "Hardware", "Physicality"],
+      stats: ["Web"],
       portfolio: "#",
-      position: { x: "50%", y: "18%" },
+      position: { x: "50%", y: "15%" },
     },
-    // Defensive line (3, 2, 25) -> Aiku, Niko, Raichi(25)
+    // Defensive line (3, 5, 17) -> Aiku, Niko, Kaiser
     {
-      name: "Aiku",
-      specialty: "REVERSE",
+      name: "Aiku (shelovesme)",
+      specialty: "web3",
       number: 3,
       avatar: "card.png",
-      stats: ["Leadership", "Binary Analysis", "Defense"],
+      stats: ["web3", "crypto", "PWN"],
       portfolio: "#",
-      position: { x: "26%", y: "34%" },
+      position: { x: "25%", y: "30%" },
     },
     {
-      name: "Niko",
-      specialty: "FORENSICS",
+      name: "Niko (parshun)",
+      specialty: "REV",
       number: 5,
       avatar: "card.png",
-      stats: ["Vision", "Stealth", "Log Analysis"],
-      portfolio: "#",
-      position: { x: "50%", y: "34%" },
+      stats: ["REV"],
+      portfolio: "https://gajendramahato.com.np/",
+      position: { x: "50%", y: "30%" },
     },
     {
-      name: "Raichi",
-      specialty: "MISC",
-      number: 25,
+      name: "Kaiser (sahsmit)",
+      specialty: "Web",
+      number: 17,
       avatar: "card.png",
-      stats: ["Marking", "Stamina", "Trash Talk"],
+      stats: ["Web"],
       portfolio: "#",
-      position: { x: "74%", y: "34%" },
+      position: { x: "75%", y: "30%" },
     },
-    // Midfield duo (Reo + Shidou)
+    // Midfield line (Reo, Shidou, Isagi)
     {
-      name: "Reo",
-      specialty: "BLOCKCHAIN",
+      name: "Reo (thatguysbroke)",
+      specialty: "Misc",
       number: 9,
       avatar: "card.png",
-      stats: ["Copy", "Versatility", "Smart Contract Audit"],
-      portfolio: "#",
-      position: { x: "42%", y: "50%" },
+      stats: ["Misc", "Web Exploitation"],
+      portfolio: "https://yunchohang.github.io/",
+      position: { x: "20%", y: "50%" },
     },
     {
-      name: "Shidou",
+      name: "Shidou (nullpi)",
       specialty: "CRYPTO",
       number: 16,
       avatar: "card.png",
-      stats: ["Extreme Goal", "Aggression", "Brute Force"],
-      portfolio: "#",
-      position: { x: "58%", y: "50%" },
-      showInPanel: true,
-    },
-    // Attacking four behind Rin: Bachira, Isagi, Nagi, Chigiri
-    {
-      name: "Bachira",
-      specialty: "WEB",
-      number: 8,
-      avatar: "card.png",
-      stats: ["Dribbling", "Creativity", "XSS Master"],
-      portfolio: "#",
-      position: { x: "22%", y: "68%" },
+      stats: ["Web", "PWN", "REV"],
+      portfolio: "https://gajendramahato.com.np/",
+      position: { x: "50%", y: "50%" },
     },
     {
-      name: "Isagi",
+      name: "Isagi (Iconic_Whisper)",
       specialty: "PWN",
       number: 11,
       avatar: "card.png",
-      stats: ["Metavision", "Direct Shot", "Adaptability"],
+      stats: ["REV", "PWN"],
+      portfolio: "https://12bijaya.github.io/portfolio/",
+      position: { x: "80%", y: "50%" },
+    },
+    // Attacking line (Bachira, Barou, Nagi)
+    {
+      name: "Bachira (PWNspirit)",
+      specialty: "PWN",
+      number: 8,
+      avatar: "card.png",
+      stats: ["PWN", "Web Exploitation"],
+      portfolio: "https://PWNspirit.xyz/",
+      position: { x: "20%", y: "70%" },
+    },
+    {
+      name: "Barou (luffy)",
+      specialty: "Web Exploitation",
+      number: 13,
+      avatar: "card.png",
+      stats: ["Web Exploitation"],
       portfolio: "#",
-      position: { x: "38%", y: "66%" },
+      position: { x: "50%", y: "70%" },
     },
     {
       name: "Nagi (werewolf)",
-      specialty: "REVERSE",
+      specialty: "Web",
       number: 7,
       avatar: "card.png",
       stats: ["Web Exploitation", "OSINT"],
-      portfolio: "#",
-      position: { x: "62%", y: "66%" },
+      portfolio: "https://w3rew0lf11.github.io/w3rew0lf/",
+      position: { x: "80%", y: "70%" },
     },
-    {
-      name: "Chigiri",
-      specialty: "FORENSICS",
-      number: 4,
-      avatar: "card.png",
-      stats: ["Speed", "Data Recovery", "Analysis"],
-      portfolio: "#",
-      position: { x: "78%", y: "68%" },
-    },
-    // Lone striker - Rin
+    // Striker - Rin
     {
       name: "Rin (0xtheM7)",
       specialty: "WEB / BUG HUNTING",
@@ -546,21 +545,41 @@ document.addEventListener("DOMContentLoaded", () => {
       avatar: "card.png",
       stats: ["Bug Bounty", "Web Exploitation"],
       portfolio: "https://himansu.com.np/",
-      position: { x: "50%", y: "82%" },
+      position: { x: "50%", y: "85%" },
     },
-    // Bench / extras: Barou (extra only) + Ego
+    // Bench / reserves
     {
-      name: "Barou",
-      specialty: "PWN",
-      number: 13,
+      name: "Raichi (gressye)",
+      specialty: "OSINT",
+      number: 25,
       avatar: "card.png",
-      stats: ["King", "Exploitation", "Intimidation"],
+      stats: ["OSINT", "Bug Hunter"],
       portfolio: "#",
       showInPanel: true,
       panelOnly: true,
     },
     {
-      name: "Ego",
+      name: "Raichi (404ninja)",
+      specialty: "Crypto",
+      number: 6,
+      avatar: "card.png",
+      stats: ["Crypto"],
+      portfolio: "#",
+      showInPanel: true,
+      panelOnly: true,
+    },
+    {
+      name: "Chigiri",
+      specialty: "Web",
+      number: 4,
+      avatar: "card.png",
+      stats: ["Web"],
+      portfolio: "#",
+      showInPanel: true,
+      panelOnly: true,
+    },
+    {
+      name: "Ego (c15c01337)",
       specialty: "Coach",
       number: "★",
       avatar: "card.png",
