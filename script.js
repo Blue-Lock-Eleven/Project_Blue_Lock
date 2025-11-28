@@ -549,7 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
       number: 10,
       avatar: "card.png",
       stats: ["Web Exploitation", "Bug Hunting"],
-      portfolio: "https://himansu.com.np/",
+      portfolio: "https://0xthem7.xyz/",
       position: { x: "50%", y: "85%" },
     },
     // Bench / reserves
