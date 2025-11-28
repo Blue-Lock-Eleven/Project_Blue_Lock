@@ -444,52 +444,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const players = [
     // GK row - Gagamaru (1)
+    // 1 GK
     {
       name: "Gagamaru (bbh@@yu)",
-      specialty: "MISC",
+      specialty: "Web Exploitation",
       number: 1,
       avatar: "card.png",
-      stats: ["Web"],
+      stats: ["Web Exploitation"],
       portfolio: "#",
       position: { x: "50%", y: "15%" },
     },
-    // Defensive line (3, 5, 17) -> Aiku, Niko, Kaiser
-    {
-      name: "Aiku (shelovesme)",
-      specialty: "web3",
-      number: 3,
-      avatar: "card.png",
-      stats: ["web3", "crypto", "PWN"],
-      portfolio: "#",
-      position: { x: "25%", y: "30%" },
-    },
+
+    // 3 DEFENDERS
     {
       name: "Niko (parshun)",
       specialty: "REV",
-      number: 5,
+      number: 2,
       avatar: "card.png",
       stats: ["REV"],
       portfolio: "https://gajendramahato.com.np/",
-      position: { x: "50%", y: "30%" },
+      position: { x: "30%", y: "30%" },
     },
-    {
-      name: "Kaiser (sahsmit)",
-      specialty: "Web",
-      number: 17,
-      avatar: "card.png",
-      stats: ["Web"],
-      portfolio: "#",
-      position: { x: "75%", y: "30%" },
-    },
-    // Midfield line (Reo, Shidou, Isagi)
     {
       name: "Reo (thatguysbroke)",
       specialty: "Misc",
-      number: 9,
+      number: 3,
       avatar: "card.png",
       stats: ["Misc", "Web Exploitation"],
       portfolio: "https://yunchohang.github.io/",
+      position: { x: "50%", y: "30%" },
+    },
+    {
+      name: "Aryu (shelovesme)",
+      specialty: "web3",
+      number: 5,
+      avatar: "card.png",
+      stats: ["web3", "crypto", "PWN"],
+      portfolio: "#",
+      position: { x: "70%", y: "30%" },
+    },
+
+    // 4 MIDFIELDERS
+    {
+      name: "Barou (luffy)",
+      specialty: "Web Exploitation",
+      number: 9,
+      avatar: "card.png",
+      stats: ["Web Exploitation"],
+      portfolio: "https://yunchohang.github.io/",
       position: { x: "20%", y: "50%" },
+    },
+    {
+      name: "Kaiser (sahsmit)",
+      specialty: "Web Exploitation",
+      number: 17,
+      avatar: "card.png",
+      stats: ["Web Exploitation"],
+      portfolio: "#",
+      position: { x: "40%", y: "50%" },
     },
     {
       name: "Shidou (nullpi)",
@@ -498,7 +510,27 @@ document.addEventListener("DOMContentLoaded", () => {
       avatar: "card.png",
       stats: ["Web", "PWN", "REV"],
       portfolio: "https://gajendramahato.com.np/",
-      position: { x: "50%", y: "50%" },
+      position: { x: "60%", y: "50%" },
+    },
+    {
+      name: "Bachira (PWNspirit)",
+      specialty: "PWN",
+      number: 8,
+      avatar: "card.png",
+      stats: ["PWN", "Web Exploitation"],
+      portfolio: "https://PWNspirit.xyz/",
+      position: { x: "80%", y: "50%" },
+    },
+
+    // 2 FORWARDS
+    {
+      name: "Nagi (werewolf)",
+      specialty: "Web Exploitation",
+      number: 7,
+      avatar: "card.png",
+      stats: ["Web Exploitation", "OSINT"],
+      portfolio: "https://w3rew0lf11.github.io/w3rew0lf/",
+      position: { x: "40%", y: "70%" },
     },
     {
       name: "Isagi (Iconic_Whisper)",
@@ -507,51 +539,24 @@ document.addEventListener("DOMContentLoaded", () => {
       avatar: "card.png",
       stats: ["REV", "PWN"],
       portfolio: "https://12bijaya.github.io/portfolio/",
-      position: { x: "80%", y: "50%" },
+      position: { x: "60%", y: "70%" },
     },
-    // Attacking line (Bachira, Barou, Nagi)
+
+    // 1 STRIKER
     {
-      name: "Bachira (PWNspirit)",
-      specialty: "PWN",
-      number: 8,
-      avatar: "card.png",
-      stats: ["PWN", "Web Exploitation"],
-      portfolio: "https://PWNspirit.xyz/",
-      position: { x: "20%", y: "70%" },
-    },
-    {
-      name: "Barou (luffy)",
-      specialty: "Web Exploitation",
-      number: 13,
-      avatar: "card.png",
-      stats: ["Web Exploitation"],
-      portfolio: "#",
-      position: { x: "50%", y: "70%" },
-    },
-    {
-      name: "Nagi (werewolf)",
-      specialty: "Web",
-      number: 7,
-      avatar: "card.png",
-      stats: ["Web Exploitation", "OSINT"],
-      portfolio: "https://w3rew0lf11.github.io/w3rew0lf/",
-      position: { x: "80%", y: "70%" },
-    },
-    // Striker - Rin
-    {
-      name: "Rin (0xtheM7)",
+      name: "Rin (0xthem7)",
       specialty: "WEB / BUG HUNTING",
       number: 10,
       avatar: "card.png",
-      stats: ["Bug Bounty", "Web Exploitation"],
+      stats: ["Web Exploitation", "Bug Hunting"],
       portfolio: "https://himansu.com.np/",
       position: { x: "50%", y: "85%" },
     },
     // Bench / reserves
     {
-      name: "Raichi (gressye)",
+      name: "Yukimiya (gressye)",
       specialty: "OSINT",
-      number: 25,
+      number: 8,
       avatar: "card.png",
       stats: ["OSINT", "Bug Hunter"],
       portfolio: "#",
@@ -561,7 +566,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       name: "Raichi (404ninja)",
       specialty: "Crypto",
-      number: 6,
+      number: 12,
       avatar: "card.png",
       stats: ["Crypto"],
       portfolio: "#",
@@ -569,7 +574,7 @@ document.addEventListener("DOMContentLoaded", () => {
       panelOnly: true,
     },
     {
-      name: "Chigiri",
+      name: "Chigiri (kamisama)",
       specialty: "Web",
       number: 4,
       avatar: "card.png",
@@ -583,7 +588,7 @@ document.addEventListener("DOMContentLoaded", () => {
       specialty: "Coach",
       number: "★",
       avatar: "card.png",
-      stats: ["Mastermind", "Strategy", "Egoism"],
+      stats: ["Mastermind", "Strategy"],
       portfolio: "#",
       showInPanel: true,
       panelOnly: true,
